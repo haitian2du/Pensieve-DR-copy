@@ -30,17 +30,17 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # time), chunk_til_video_end
 MODEL_SAVE_INTERVAL = 100
 #VIDEO_BIT_RATE = [300, 750, 1200, 1850, 2850, 4300, 6500, 9800, 14700, 22050, 33000]  # Kbps
-VIDEO_BIT_RATE = [300, 1200, 2850, 6500, 33000, 165000]  # Kbps
+VIDEO_BIT_RATE = [300, 750, 1200, 1850, 2850, 4300]  # Kbps
 
 HD_REWARD = [1, 2, 3, 12, 15, 20]
 M_IN_K = 1000.0
-REBUF_PENALTY = 165  # 1 sec rebuffering -> 3 Mbps
+REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
 DEFAULT_QUALITY = 0  # default video quality without agent
 NOISE = 0
 DURATION = 1
 
-RLMPC_LOG = '../new-DR-results/sanity-check-2/'
+RLMPC_LOG = '../UDR-results/rebuf-4_3/'
 os.makedirs(RLMPC_LOG ,exist_ok=True )
 
 def calculate_from_selection(selected, last_bit_rate):
@@ -242,10 +242,8 @@ def test(args, test_traces_dir, actor, log_output_dir, noise, duration):
     #                  '450-550': 134.21, 'FCC': -4.69
     #                  }
 
-    mpc_mean_reward = {'0-5': -17.918770989059876, '5-100': 17.3287314980698,
-                       '100-250': 66.47100259018036, '250-450': 126.40666137890435,
-                       '450-1050': 136.02513767823524, 'FCC': -4.69}
-
+    mpc_mean_reward = {'0-5': 0.8635062837705033 ,'5-100': 3.8857128521550677 ,'100-250': 4.0496982254955665 ,
+                       '250-450': 4.063044948418092 ,'450-1050': 4.047130659513102 ,'FCC': 0.8385658506421864}
 
     print( rl_mean_reward ,"-----rl_mean_reward-----" )
     d3 = {key: mpc_mean_reward[key] - rl_mean_reward.get( key ,0 ) for key in rl_mean_reward}
