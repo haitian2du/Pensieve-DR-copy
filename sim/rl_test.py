@@ -17,11 +17,11 @@ S_INFO_MPC = 5  # bit_rate, buffer_size, rebuffering_time, bandwidth_measurement
 S_LEN = 8  # take how many frames in the past
 A_DIM = 6
 MPC_FUTURE_CHUNK_COUNT = 5
-VIDEO_BIT_RATE_MPC = np.array([300, 1200, 2850, 6500, 33000, 165000])  # Kbps
+VIDEO_BIT_RATE_MPC = np.array([300, 750, 1200, 1850, 2850, 4300])  # Kbps
 TOTAL_VIDEO_CHUNKS = 48
 past_errors = []
 past_bandwidth_ests = []
-VIDEO_SIZE_FILE = '../data/video_size_6_larger/video_size_'
+VIDEO_SIZE_FILE = '../data/video_sizes/video_size_'
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
@@ -31,11 +31,11 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # bit_rate, buffer_size, next_chunk_size, bandwidth_measurement(throughput and time), chunk_til_video_end
 S_INFO = 6
 #S_LEN = 11  # take how many frames in the past
-VIDEO_BIT_RATE = [300, 1200, 2850, 6500, 33000, 165000]  # Kbps
+VIDEO_BIT_RATE = [300, 750, 1200, 1850, 2850, 4300]  # Kbps
 BUFFER_NORM_FACTOR = 10.0
 CHUNK_TIL_VIDEO_END_CAP = 48.0
 M_IN_K = 1000.0
-REBUF_PENALTY = 165  # 1 sec rebuffering -> 3 Mbps
+REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
 DEFAULT_QUALITY = 0  # default video quality without agent
 RANDOM_SEED = 42

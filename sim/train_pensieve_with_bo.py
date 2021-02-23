@@ -17,9 +17,9 @@ from bayes_opt import BayesianOptimization
 # Improvement: Probably better if replaced with argparse and passed in (later)
 # TOTAL_EPOCHS = 10000
 # BAYESIAN_OPTIMIZER_INTERVAL = 1000
-TRAINING_DATA_DIR = "../data/generated_traces_ts_float-BO/train_3/"
+TRAINING_DATA_DIR = "../data/generated_traces_ts_float-BO/train_4_rebuf_4_3/"
 VAL_TRACE_DIR = '../data/generated_traces_ts_float-BO/val'
-RESULTS_DIR = "../BO-results/randomize-BW-buffer-10"
+RESULTS_DIR = "../BO-results/randomize-BW-rebuf_4_3"
 #NN_MODEL='../new-DR-results/sanity-check-2/model_saved/nn_model_ep_33200.ckpt'
 
 # num_training_runs = int(TOTAL_EPOCHS / BAYESIAN_OPTIMIZER_INTERVAL)

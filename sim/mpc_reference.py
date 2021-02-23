@@ -15,22 +15,24 @@ S_LEN = 8  # take how many frames in the past
 A_DIM = 6
 MPC_FUTURE_CHUNK_COUNT = 3
 
-VIDEO_BIT_RATE = np.array([300, 1200, 2850, 6500, 33000, 165000])  # Kbps
+# VIDEO_BIT_RATE = np.array([300, 1200, 2850, 6500, 33000, 165000])  # Kbps
+VIDEO_BIT_RATE = np.array([300, 750, 1200, 1850, 2850, 4300])
+
 BITRATE_REWARD = [1, 2, 3, 12, 15, 20]
 BUFFER_NORM_FACTOR = 10.0
 CHUNK_TIL_VIDEO_END_CAP = 48.0
 TOTAL_VIDEO_CHUNKS = 48
 M_IN_K = 1000.0
-REBUF_PENALTY = 33  # 1 sec rebuffering -> 3 Mbps
+REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
-DEFAULT_QUALITY = 1  # default video quality without agent
+DEFAULT_QUALITY = 0  # default video quality without agent
 RANDOM_SEED = 20
 
 #CHUNK_COMBO_OPTIONS = []
 past_errors = []
 past_bandwidth_ests = []
-VIDEO_SIZE_FILE = '../data/video_size_6_larger/video_size_'
-TEST_RESULT = '../results/mpc-speed-up'
+VIDEO_SIZE_FILE = '../data/video_sizes/video_size_'
+TEST_RESULT = '../results/mpc-speed-up_4_3'
 TEST_TRACE = '../data/generated_traces_ts_float-BO/val/'
 
 CHUNK_COMBO_OPTIONS = np.array([combo for combo in itertools.product(
@@ -317,6 +319,11 @@ def main():
     #                     '100-200': 52.89938304947093, '200-600': 124.52721660104443, '600-1000': 136.25727050809138}
     #
     print( mpc_mean_reward ,"-----mpc_mean_reward-----" )
+    mpc_mean_reward={'0-5': 0.8635062837705033, '5-100': 3.8857128521550677, '100-250': 4.0496982254955665,
+                     '250-450': 4.063044948418092, '450-1050': 4.047130659513102, 'FCC': 0.8385658506421864}
+
+    mpc_mean_reward_43 = {'0-5': -1.249331066501254, '5-100': 3.670276607268798, '100-250': 3.954314263936125,
+                          '250-450': 3.984664248590799, '450-1050': 3.9784889555053313, 'FCC': -1.5317181101514756}
 
     print( "--- %s seconds ---" % (time.time() - start_time) )
 
