@@ -36,7 +36,7 @@ MODEL_SAVE_INTERVAL = 100
 VIDEO_BIT_RATE = [300, 750, 1200, 1850, 2850, 4300]  # Kbps
 
 M_IN_K = 1000.0
-REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
+REBUF_PENALTY = 43  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
 DEFAULT_QUALITY = 0  # default video quality without agent
 NOISE = 0
@@ -238,8 +238,8 @@ def test(args, test_traces_dir, actor, log_output_dir, noise, duration):
                    '450-1050_err': err_4 ,
                    'FCC_err': err_5}
 
-    mpc_mean_reward = {'0-5': 0.8635062837705033, '5-100': 3.8857128521550677, '100-250': 4.0496982254955665,
-                     '250-450': 4.063044948418092, '450-1050': 4.047130659513102, 'FCC': 0.8385658506421864}
+    mpc_mean_reward =  {'0-5': -1.249331066501254, '5-100': 3.670276607268798, '100-250': 3.954314263936125,
+                          '250-450': 3.984664248590799, '450-1050': 3.9784889555053313, 'FCC': -1.5317181101514756}
 
 
     print( rl_mean_reward ,"-----rl_mean_reward-----" )
